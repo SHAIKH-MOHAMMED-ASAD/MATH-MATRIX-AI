@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Math Solver - Intelligent Math Problem Solving</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-calculator"></i>
+                    MathMatrix AI
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#examples">Examples</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li> 
+                    <li><a href="solver.html" class="btn btn-primary">Try Solver</a></li>
+                </ul>
+             </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Solve Any Math Problem with <span>AI Power</span></h1>
+                    <p>Our intelligent math solver provides step-by-step solutions for problems ranging from basic arithmetic to advanced calculus. Get instant help with your math homework and learning.</p>
+                    <div class="hero-buttons">
+                        <a href="solver.html" class="btn btn-primary">Try AI Solver</a>
+                        <a href="#examples" class="btn btn-outline">See Examples</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AI Math Solver Interface">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our AI Math Solver</h2>
+                <p>Our platform combines cutting-edge AI technology with educational expertise to provide the best math solving experience.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Advanced AI Technology</h3>
+                    <p>Powered by state-of-the-art AI models that understand complex mathematical concepts and provide accurate solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <h3>Step-by-Step Solutions</h3>
+                    <p>Not just answers - we break down each problem into understandable steps to help you learn the process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Results</h3>
+                    <p>Get solutions in seconds, not hours. Our AI processes problems quickly and delivers accurate results.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Focus</h3>
+                    <p>Designed to help students learn, with explanations that build understanding of mathematical concepts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>All Math Topics</h3>
+                    <p>From basic arithmetic to advanced calculus, our solver handles a wide range of mathematical disciplines.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access our solver on any device - desktop, tablet, or smartphone - for math help wherever you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="examples">
+        <div class="container">
+            <div class="section-title">
+                <h2>Try These Example Problems</h2>
+                <p>Explore our solver with these common math problems across different topics and difficulty levels.</p>
+            </div>
+            <div class="examples-grid">
+                <div class="example-card" onclick="loadExample('Calculate: 147 × 23 + 89')">
+                    <span class="example-type">Basic Arithmetic</span>
+                    <h3>Calculate: 147 × 23 + 89</h3>
+                    <p>Practice multiplication and addition with this arithmetic problem.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Solve: 3x - 7 = 2x + 15')">
+                    <span class="example-type">Linear Equation</span>
+                    <h3>Solve: 3x - 7 = 2x + 15</h3>
+                    <p>Find the value of x in this simple linear equation.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Solve: x² - 5x + 6 = 0')">
+                    <span class="example-type">Quadratic Formula</span>
+                    <h3>Solve: x² - 5x + 6 = 0</h3>
+                    <p>Apply the quadratic formula to find the roots of this equation.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Find d/dx of x³ - 4x² + 7x')">
+                    <span class="example-type">Calculus Derivative</span>
+                    <h3>Find d/dx of x³ - 4x² + 7x</h3>
+                    <p>Practice differentiation with this polynomial function.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Solve: sin(x) = 0.5 for 0 ≤ x ≤ 2π')">
+                    <span class="example-type">Trigonometry</span>
+                    <h3>Solve: sin(x) = 0.5 for 0 ≤ x ≤ 2π</h3>
+                    <p>Find all solutions to this trigonometric equation within the given interval.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Find\\space area\\space of\\space triangle\\space with\\space sides\\space 3, 4, 5')">
+                    <span class="example-type">Geometry</span>
+                    <h3>Find area of triangle with sides 3, 4, 5</h3>
+                    <p>Calculate the area of a right triangle using the given side lengths.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Solve: 2x + 3y = 7 and x - y = 1')">
+                    <span class="example-type">System of Equations</span>
+                    <h3>Solve: 2x + 3y = 7 and x - y = 1</h3>
+                    <p>Find the values of x and y that satisfy both equations simultaneously.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Solve: log₂(x) + log₂(x-3) = 2')">
+                    <span class="example-type">Logarithms</span>
+                    <h3>Solve: log₂(x) + log₂(x-3) = 2</h3>
+                    <p>Apply logarithmic properties to solve this equation.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Simplify: (3+4i)(2-i)')">
+                    <span class="example-type">Complex Numbers</span>
+                    <h3>Simplify: (3+4i)(2-i)</h3>
+                    <p>Multiply complex numbers and express the result in standard form.</p>
+                </div>
+                <div class="example-card" onclick="loadExample('Find mean and standard deviation of: 2, 4, 6, 8, 10')">
+                    <span class="example-type">Statistics</span>
+                    <h3>Find mean and standard deviation of: 2, 4, 6, 8, 10</h3>
+                    <p>Calculate basic statistical measures for this data set.</p>
+                </div>
+                <div class="example-card gradient-3" onclick="loadExample('if\\space\\space A=\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\space\\space and \\space\\space B=\\begin{bmatrix} 4 & 3 \\\\ 2 & 1 \\end{bmatrix}\\space\\space then\\space\\space find\\space\\space A\\times B=?')">
+                    <span class="example-type">Linear Algebra</span>
+                    <img src="images/matrix-example.png" alt="Matrix multiplication problem">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="cta">
+                <h2>Ready to Solve Your Math Problems?</h2>
+                <p>Join thousands of students who are already using our AI Math Solver to improve their math skills and get homework help.</p>
+                <a href="solver.html" class="btn">Try AI Solver Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MathSolver AI</h3>
+                    <p>An intelligent math solving platform that helps students understand and solve mathematical problems with step-by-step explanations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="solver.html">Try Solver</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Math Topics</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Algebra</a></li>
+                        <li><a href="#">Geometry</a></li>
+                        <li><a href="#">Calculus</a></li>
+                        <li><a href="#">Statistics</a></li>
+                        <li><a href="#">Trigonometry</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> support@mathsolver.ai</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Location</h3>
+                    <div class="footer-map">
+                        <a href="http://www.google.com/maps/search/?api=1&query=M.+H.+Saboo+Siddik+College+of+Engineering" target="_blank" class="map-overlay-link" aria-label="Open location in Google Maps"></a>
+                        
+                        <iframe 
+                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.684534484462!2d72.8315663758837!3d18.98945305436322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce683c9298e3%3A0x232d3e38202954a3!2sM.%20H.%20Saboo%20Siddik%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1760077283281!5m2!1sen!2sin"
+                            width="100%" 
+                            height="200" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                     <ul class="footer-links" style="margin-top: 15px;">
+                        <li><i class="fas fa-map-marker-alt"></i> M. H. Saboo Siddik College of Engineering, Byculla, Mumbai-400008</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MathMatrix AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

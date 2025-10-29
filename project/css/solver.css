@@ -1,0 +1,861 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #4361ee;
+    --primary-light: #4895ef;
+    --secondary: #3f37c9;
+    --accent: #f72585;
+    --dark: #1e1e2c;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+    --success: #4cc9f0;
+    --gradient: linear-gradient(135deg, #4361ee, #3a0ca3);
+    --shadow: 0 2px 10px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7ff 0%, #e6ebff 100%);
+    color: var(--dark);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: white;
+    box-shadow: var(--shadow);
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logo i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.back-btn {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Main Container */
+.solver-container {
+    display: flex;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+/* Chat Section */
+.chat-section {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    padding: 20px 25px;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chat-header i {
+    font-size: 1.8rem;
+}
+
+.chat-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+#chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-window::-webkit-scrollbar-track {
+    background: var(--light);
+    border-radius: 10px;
+}
+
+#chat-window::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 10px;
+}
+
+.chat-message {
+    display: flex;
+    gap: 12px;
+    max-width: 85%;
+}
+
+/* entrance animation removed for calmer UI */
+
+.chat-message.bot {
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.bot .message-avatar {
+    background: var(--gradient);
+    color: white;
+}
+
+.user .message-avatar {
+    background: linear-gradient(135deg, #f72585, #b5179e);
+    color: white;
+}
+
+.message-content {
+    padding: 15px 20px;
+    border-radius: 15px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.bot .message-content {
+    background: var(--light);
+    border: 1px solid #e0e0e0;
+}
+
+.user .message-content {
+    background: #e1f0ff;
+    border: 1px solid #b3d9ff;
+}
+
+/* Live Preview */
+#live-preview-container {
+    padding: 15px 25px;
+    background: #fff8e1;
+    border-top: 2px solid #ffd54f;
+    display: none;
+    min-height: 50px;
+}
+
+#live-preview-container:empty {
+    display: none;
+}
+
+/* Input Section */
+.chat-input-section {
+    padding: 20px 25px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 50px;
+    background: var(--light);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.input-container:focus-within {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.15);
+}
+
+#keyboard-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 1.5rem;
+    color: var(--gray);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+#keyboard-toggle-btn:hover {
+    background: #e0e0e0;
+    color: var(--primary);
+}
+
+#chat-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    padding: 5px;
+}
+
+#send-btn {
+    background: var(--gradient);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#send-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+}
+
+#send-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+/* Disabled state for send button */
+#send-btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Math Keyboard */
+.math-keyboard {
+    background: white;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    display: none;
+    position: relative;
+}
+
+.keyboard-main {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.keyboard-key {
+    font-size: 0.9rem;
+    background: var(--light);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 40px;
+    font-weight: 500;
+}
+
+.keyboard-key:hover {
+    background: var(--primary-light);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(67, 97, 238, 0.2);
+}
+
+.keyboard-key.action-key {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+}
+
+.keyboard-key.action-key:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* Functions Panel */
+.functions-panel {
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    width: 500px;
+    max-width: 95vw;
+    background: white;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+    display: none;
+}
+
+.functions-panel.visible {
+    display: block;
+}
+
+.panel-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--light);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray);
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: var(--gradient);
+    color: white;
+    font-weight: 600;
+}
+
+.tab-btn:hover:not(.active) {
+    background: var(--light);
+}
+
+.panel-content {
+    padding: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.pane-section {
+    margin-bottom: 20px;
+}
+
+.pane-section h4 {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.key-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+.key-grid .keyboard-key {
+    padding: 12px;
+    min-height: 60px;
+    font-size: 0.95rem;
+}
+
+/* Matrix Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.visible {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    width: auto;
+    min-width: 350px;
+    max-width: 90%;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h3 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--dark);
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--accent);
+}
+
+.dimension-selector {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.dimension-selector input[type="number"] {
+    width: 70px;
+    padding: 10px;
+    border: 2px solid var(--light);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.dimension-selector input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.modal-btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: var(--gradient);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+}
+
+#matrix-grid-container {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 25px;
+    max-height: 250px;
+    overflow: auto;
+    padding: 10px;
+    justify-content: center;
+}
+
+.matrix-cell {
+    width: 60px;
+    height: 45px;
+    text-align: center;
+    border: 2px solid var(--light);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.matrix-cell:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.modal-actions {
+    text-align: center;
+}
+
+/* Math Formatting */
+.step-number {
+    display: inline-block;
+    background: var(--gradient);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.section-header {
+    font-weight: 700;
+    font-size: 1.15em;
+    margin: 25px 0 15px 0;
+    padding: 12px 0;
+    border-bottom: 3px solid var(--primary);
+    color: var(--dark);
+}
+
+.final-answer {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    border: 3px solid #4caf50;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.final-answer::before {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 2rem;
+    color: #4caf50;
+    opacity: 0.3;
+}
+
+.verification-section {
+    background: linear-gradient(135deg, #fff3cd, #ffe8a1);
+    border: 2px solid #ffc107;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.equation-align {
+    text-align: center;
+    margin: 15px 0;
+    padding: 15px;
+    background: var(--light);
+    border-radius: 12px;
+}
+
+/* User text styling */
+.user-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Text preview styling */
+.text-preview {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Improved equation alignment */
+.equation-align {
+    text-align: center;
+    margin: 15px 0;
+    padding: 15px;
+    background: var(--light);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+/* Better final answer styling */
+.final-answer {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    border: 3px solid #4caf50;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.final-answer::before {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 2rem;
+    color: #4caf50;
+    opacity: 0.3;
+}
+
+/* Improved keyboard layout for better text input */
+#chat-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    padding: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    min-height: 20px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+/* Make space key more prominent in keyboard */
+.keyboard-key.space-key {
+    grid-column: span 2;
+    background: var(--primary-light);
+    color: white;
+}
+
+/* Math Fallback Styling */
+.math-fallback {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    color: #495057;
+}
+
+.math-fallback-inline {
+    background: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'Courier New', monospace;
+    color: #495057;
+}
+
+.final-answer-fallback {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    font-weight: bold;
+    text-align: center;
+    color: #155724;
+}
+
+/* Improved MathJax container styling */
+.mathjax-container {
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.math-expression {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Better step content styling */
+.step-content {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 50px);
+}
+
+/* Improved section header spacing */
+.section-header {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.section-header:first-child {
+    margin-top: 0;
+}
+
+/* Better equation alignment */
+.equation-align {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow-x: auto;
+    border: 1px solid #e9ecef;
+}
+
+/* Enhanced final answer styling */
+.final-answer {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    border: 3px solid #4caf50;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.final-answer::before {
+    content: "✓";
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 2.5rem;
+    color: #4caf50;
+    opacity: 0.3;
+}
+
+/* removed animated loading line for bot messages */
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .solver-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .keyboard-main {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .functions-panel {
+        width: 95vw;
+    }
+    
+    .equation-align {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .final-answer {
+        padding: 20px;
+        margin: 20px 0;
+    }
+}
+
+/* --- UX additions: clear and copy buttons (theme-preserving) --- */
+#clear-btn {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    height: 36px;
+    border-radius: 18px;
+    cursor: pointer;
+    padding: 0 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+#clear-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.message-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}

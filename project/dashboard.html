@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Math Solver - Performance Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-calculator"></i>
+                    MathMatrix AI
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#examples">Examples</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li> 
+                    <li><a href="solver.html" class="btn btn-primary">Try Solver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <section class="kpi-section">
+                <div class="kpi-card">
+                    <div class="kpi-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="kpi-content">
+                        <h3>Total Requests</h3>
+                        <p id="total-requests">0</p>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon"><i class="fas fa-bullseye"></i></div>
+                    <div class="kpi-content">
+                        <h3>Accuracy</h3>
+                        <p id="accuracy">0.00%</p>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon"><i class="fas fa-hourglass-half"></i></div>
+                    <div class="kpi-content">
+                        <h3>Avg. Response Time</h3>
+                        <p id="avg-response-time">0.00s</p>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="kpi-content">
+                        <h3>Failed Responses</h3>
+                        <p id="failed-responses">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-content">
+                <div class="performance-panel panel">
+                    <div class="panel-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h2>Performance Metrics</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <table class="performance-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Timestamp</th>
+                                        <th>Response Time</th>
+                                        <th>Success</th>
+                                        <th>Problem Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="performance-table-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="chart-wrapper">
+                            <h3 class="chart-title">Problem Type Distribution</h3>
+                            <div class="chart-container" style="height: 320px;">
+                                 <canvas id="problem-type-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback-panel panel">
+                    <div class="panel-header">
+                        <i class="fas fa-comments"></i>
+                        <h2>User Feedback</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-wrapper">
+                            <h3 class="chart-title">Feedback Ratings</h3>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="feedback-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="recent-feedback">
+                            <h3 class="chart-title">Recent Comments</h3>
+                            <div id="recent-feedback-container"></div>
+                        </div>
+                         <div class="feedback-form">
+                            <h3 class="chart-title">Leave Feedback</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="rating">Rating: <span id="rating-value">5</span> ⭐</label>
+                                    <input type="range" id="rating" name="rating" min="1" max="5" value="5" oninput="document.getElementById('rating-value').textContent = this.value">
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="Share your experience..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

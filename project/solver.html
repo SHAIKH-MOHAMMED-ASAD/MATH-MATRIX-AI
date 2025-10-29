@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Math Solver - Interactive Solver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/solver.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-calculator"></i>
+                MathMatrix AI
+            </a>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <div class="solver-container">
+        <div class="chat-section">
+            <div class="chat-header">
+                <i class="fas fa-robot"></i>
+                <h2>AI Math Assistant</h2>
+            </div>
+            <div id="chat-window"></div>
+            <div id="live-preview-container"></div>
+            
+            <div class="math-keyboard" id="math-keyboard">
+                <div class="functions-panel" id="functions-panel">
+                    <div class="panel-tabs" id="panel-tabs"></div>
+                    <div class="panel-content" id="panel-content"></div>
+                </div>
+                <div class="keyboard-main" id="keyboard-main"></div>
+            </div>
+
+            <form class="chat-input-section" id="chat-form">
+                <div class="input-container">
+                    <button type="button" id="keyboard-toggle-btn" title="Toggle Keyboard">
+                        <i class="fas fa-keyboard"></i>
+                    </button>
+                    <textarea id="chat-input" placeholder="Type your math problem here..." rows="1"></textarea>
+                    <button type="button" id="clear-btn" title="Clear chat">Clear</button>
+                    <button type="submit" id="send-btn" title="Send">
+                        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="matrix-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal-btn">&times;</span>
+            <h3>Create Matrix</h3>
+            <div class="dimension-selector">
+                <input type="number" id="matrix-rows" min="1" max="10" value="2" aria-label="Rows">
+                <span>×</span>
+                <input type="number" id="matrix-cols" min="1" max="10" value="2" aria-label="Columns">
+                <button class="modal-btn" id="create-grid-btn">Create Grid</button>
+            </div>
+            <div id="matrix-grid-container"></div>
+            <div class="modal-actions">
+                <button class="modal-btn" id="insert-matrix-btn">Insert Matrix</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script src="js/solver.js"></script>
+</body>
+</html>
